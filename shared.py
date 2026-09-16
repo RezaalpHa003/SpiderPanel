@@ -12,8 +12,6 @@ TIMEOUT = 30
 # ── Core State ──
 stats = {
     "total_bytes": 0,
-    "total_sent_bytes": 0,
-    "total_received_bytes": 0,
     "total_requests": 0,
     "total_errors": 0,
     "start_time": 0,

@@ -66,7 +66,7 @@ async def parse_vless_header(chunk: bytes):
         raise ValueError(f"unknown addr type: {addr_type}")
     return command, address, port, chunk[pos:]
 
-async def check_and_use(uid: str, n: int, direction: str = "total") -> bool:
+async def check_and_use(uid: str, n: int) -> bool:
     m = _get_main()
     async with m.LINKS_LOCK:
         link = m.LINKS.get(uid)
@@ -76,10 +76,6 @@ async def check_and_use(uid: str, n: int, direction: str = "total") -> bool:
             return False
         link["used_bytes"] += n
         stats["total_bytes"] += n
-        if direction == "sent":
-            stats["total_sent_bytes"] = stats.get("total_sent_bytes", 0) + n
-        elif direction == "received":
-            stats["total_received_bytes"] = stats.get("total_received_bytes", 0) + n
         hourly_traffic[m.now_ir().strftime("%H:00")] += n
 
     # Sync traffic back to user (so subscription page shows real usage)
@@ -101,7 +97,7 @@ async def relay_ws_to_tcp(ws: WebSocket, writer: asyncio.StreamWriter, conn_id: 
             data = msg.get("bytes") or (msg.get("text") or "").encode()
             if not data:
                 continue
-            if not await check_and_use(uid, len(data), "sent"):
+            if not await check_and_use(uid, len(data)):
                 await ws.close(code=1008, reason="quota/disabled/unknown")
                 break
             stats["total_requests"] += 1
@@ -124,7 +120,7 @@ async def relay_tcp_to_ws(ws: WebSocket, reader: asyncio.StreamReader, conn_id: 
             data = await reader.read(RELAY_BUF_LOCAL)
             if not data:
                 break
-            if not await check_and_use(uid, len(data), "received"):
+            if not await check_and_use(uid, len(data)):
                 await ws.close(code=1008, reason="quota/disabled/unknown")
                 break
             connections[conn_id]["bytes"] += len(data)

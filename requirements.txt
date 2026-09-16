@@ -9,5 +9,3 @@ pillow==10.4.0
 psutil
 cryptography
 pysocks>=1.7.1
-
-python-multipart>=0.0.9

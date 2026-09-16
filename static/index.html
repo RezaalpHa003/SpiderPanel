@@ -907,21 +907,7 @@ tr{animation:fadeIn .3s ease}
 .sidebar-tog{display:none}@media(max-width:900px){.sidebar-tog{display:inline-flex!important}}
 
 </style>
-<style>
-:root{--bg:#050505!important;--bg2:#0a0a0a!important;--bg3:#111!important;--txt:#fff!important;--txt2:#aaa!important;--border:#282828!important;--neon:#fff!important;--green:#fff!important;--blue:#fff!important;--purple:#fff!important;--red:#fff!important;--gold:#fff!important;--glow:none!important}
-[data-theme=light]{--bg:#f5f5f5!important;--bg2:#fff!important;--bg3:#eee!important;--txt:#050505!important;--txt2:#555!important;--border:#d1d1d1!important;--neon:#000!important;--green:#000!important;--blue:#000!important;--purple:#000!important;--red:#000!important;--gold:#000!important}
-html,body{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;overscroll-behavior:none}
-input,textarea,select,button{user-select:none;-webkit-user-select:none}
-.panel,.stat,.u-card,.tbl,.modal-c,.sidebar,.topbar,.login-card,.accordion-group{box-shadow:0 12px 0 rgba(0,0,0,.1),0 18px 36px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.06)!important;transition:transform .28s ease,box-shadow .28s ease!important}
-.panel:hover,.stat:hover,.u-card:hover{transform:translateY(-3px)}
-.glow{filter:none!important;text-shadow:none!important}
-.accordion-group{overflow:hidden;border:1px solid var(--border);border-radius:16px;background:var(--bg2);margin-bottom:14px}
-.accordion-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:transparent;border:0;color:var(--txt);font:inherit;font-weight:800;cursor:pointer}
-.accordion-chevron{transition:transform .3s}.accordion-trigger.open .accordion-chevron{transform:rotate(180deg)}
-.accordion-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease;overflow:hidden}.accordion-body.open{grid-template-rows:1fr}.accordion-body>*{min-height:0}.panel.panel-collapsed>:not(.panel-h){display:none!important}.panel.panel-collapsed{min-height:58px}
-.brand-logo{width:72px;height:72px;object-fit:contain;display:block;margin:0 auto 8px;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35));animation:spiderFloat 4s ease-in-out infinite}
-@keyframes spiderFloat{50%{transform:translateY(-4px) scale(1.03)}}
-</style></head>
+</head>
 <body>
 
 <canvas id="particles"></canvas>
@@ -975,7 +961,7 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
   <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="closeSidebar()"></div>
   <aside class="sidebar" id="sidebar">
     <div class="sb-brand">
-      <img src="/static/spiderman-sharp.svg" alt="S" onerror="this.style.display='none'" style="background:transparent;mix-blend-mode:screen">
+      <img src="/static/spider-logo.png" alt="S" onerror="this.style.display='none'" style="background:transparent;mix-blend-mode:screen">
       <div>
         <div class="sb-brand-t"><span>S</span>PIDER</div>
         <div class="sb-brand-s">PANEL v5</div>
@@ -994,10 +980,6 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
         <span class="nav-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></span>
         <span data-i18n="inbounds">اینباندها</span>
       </div>
-      <div class="nav-item" onclick="switchTab('nodes',this)">
-        <span class="nav-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.5 10.5l6.5-3M8.5 13.5l6.5 3"/></svg></span>
-        <span data-i18n="nodes">Node</span>
-      </div>
       <div class="nav-item" onclick="switchTab('scanner',this)">
         <span class="nav-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v3l2 2"/></svg></span>
         <span data-i18n="scanner">اسکنر IP</span>
@@ -1005,6 +987,14 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
       <div class="nav-item" onclick="switchTab('worker',this)">
         <span class="nav-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
         <span data-i18n="worker">Worker</span>
+      </div>
+      <div class="nav-item" onclick="switchTab('autoconfig',this)">
+        <span class="nav-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/><circle cx="12" cy="12" r="4"/></svg></span>
+        <span data-i18n="autoconfig">Auto Config</span>
+      </div>
+      <div class="nav-item" id="nav-tunnel" onclick="switchTab('tunnel',this)">
+        <span class="nav-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10a8 8 0 0116 0v10"/><line x1="2" y1="20" x2="22" y2="20"/><line x1="9" y1="20" x2="9" y2="13"/><line x1="15" y1="20" x2="15" y2="13"/></svg></span>
+        <span data-i18n="tunnel">Tunnel</span>
       </div>
       <div class="nav-item" onclick="switchTab('settings',this)">
         <span class="nav-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
@@ -1067,20 +1057,6 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
           <div id="inbounds-list"><div class="empty" data-i18n="loading">در حال بارگذاری...</div></div>
         </div>
 
-      </div>
-
-      <!-- NODES TAB -->
-      <div class="tab-content hidden" id="tab-nodes">
-        <div class="panel">
-          <div class="panel-h" style="justify-content:space-between">
-            <span class="glow" data-i18n="nodes">Node</span>
-            <div style="display:flex;gap:8px">
-              <button class="btn btn-g" onclick="openNodePicker()"><span data-i18n="edit">Edit</span></button>
-              <button class="btn btn-p" onclick="openAddNode()"><span data-i18n="addNode">Add Node</span></button>
-            </div>
-          </div>
-          <div id="nodes-list"><div class="empty" data-i18n="loading">Loading...</div></div>
-        </div>
       </div>
 
       <!-- IP SCANNER TAB -->
@@ -1397,66 +1373,167 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
 
       <!-- SETTINGS TAB -->
       <div class="tab-content hidden" id="tab-settings">
-        <div class="accordion-group">
-          <button class="accordion-trigger" type="button" onclick="toggleAccordion('settings-appearance',this)">
-            <span data-i18n="appearance">ظاهر</span><span class="accordion-chevron">⌄</span>
-          </button>
-          <div class="accordion-body" id="settings-appearance">
-            <div class="panel">
-              <div class="panel-h"><span class="glow" data-i18n="appearance">تنظیمات ظاهری</span></div>
-              <div class="set-row">
-                <span class="set-lbl" data-i18n="themeMode">حالت نمایش</span>
-                <div style="display:flex;gap:8px">
-                  <button class="btn btn-sm btn-g" onclick="setTheme('dark')"><span data-i18n="dark">تاریک</span></button>
-                  <button class="btn btn-sm btn-g" onclick="setTheme('light')"><span data-i18n="light">روشن</span></button>
-                </div>
-              </div>
+
+        <!-- Server Resources -->
+        <div class="panel" style="margin-bottom:14px">
+          <div class="panel-h"><span class="glow" data-i18n="serverResources">Server Resources</span></div>
+          <div id="neon-bars">
+            <div class="set-row" style="flex-direction:column;align-items:stretch;gap:6px">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--txt2)">CPU</span><span id="cpu-val" style="color:var(--neon);font-family:monospace">--</span></div>
+              <div class="pbar" style="height:8px;border-radius:4px"><div class="pbar-f" id="cpu-bar" style="width:0%;background:linear-gradient(90deg,var(--neon),#ff6b6b);border-radius:4px;transition:width .5s"></div></div>
+            </div>
+            <div class="set-row" style="flex-direction:column;align-items:stretch;gap:6px;margin-top:10px">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--txt2)">RAM</span><span id="ram-val" style="color:#ffab00;font-family:monospace">--</span></div>
+              <div class="pbar" style="height:8px;border-radius:4px"><div class="pbar-f" id="ram-bar" style="width:0%;background:linear-gradient(90deg,#ffab00,#ff6b00);border-radius:4px;transition:width .5s"></div></div>
+            </div>
+            <div class="set-row" style="flex-direction:column;align-items:stretch;gap:6px;margin-top:10px">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--txt2)">Disk</span><span id="disk-val" style="color:var(--blue);font-family:monospace">--</span></div>
+              <div class="pbar" style="height:8px;border-radius:4px"><div class="pbar-f" id="disk-bar" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:4px;transition:width .5s"></div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--txt2);margin-top:8px">
+              <span>Network: <b id="net-sent" style="color:var(--neon)">--</b> up / <b id="net-recv" style="color:var(--blue)">--</b> down</span>
+              <span>Uptime: <b id="sys-uptime" style="color:var(--gold)">--</b></span>
             </div>
           </div>
         </div>
-        <div class="accordion-group">
-          <button class="accordion-trigger" type="button" onclick="toggleAccordion('settings-advanced',this)">
-            <span data-i18n="advanced">پیشرفته</span><span class="accordion-chevron">⌄</span>
-          </button>
-          <div class="accordion-body" id="settings-advanced">
-            <div class="panel">
-              <div class="panel-h"><span class="glow" data-i18n="nodeApiKey">API Key</span></div>
-              <div class="f-g"><label data-i18n="apiKey">API Key</label><div style="display:flex;gap:8px"><input id="settings-api-key" readonly style="flex:1"><button class="btn btn-g" onclick="rotateApiKey()" data-i18n="regenerate">Regenerate</button></div></div>
-              <div class="f-g"><label data-i18n="serverIp">Server</label><div id="server-identity" class="px-hint">--</div></div>
-            </div>
-            <div class="panel">
-              <div class="panel-h"><span class="glow" data-i18n="panelMusic">Panel Music</span></div>
-              <div class="set-row"><span class="set-lbl" data-i18n="bgMusic">Background Music</span>
-                <button type="button" class="ios-switch on" id="audio-autoplay" onclick="togglePanelAudio()" data-i18n-title="toggleMusic" title="روشن/خاموش"></button>
-              </div>
-              <div class="sub-link" id="audio-file" style="margin-top:8px;margin-bottom:0">static/music-panel.mp3</div>
-              <audio id="panel-audio-player" loop style="display:none"></audio>
-            </div>
-            <div class="panel">
-              <div class="panel-h"><span class="glow" data-i18n="changePassword">Change Password</span></div>
-              <form onsubmit="changePassword(event)">
-                <div class="f-g"><label data-i18n="curPass">رمز فعلی</label><input type="password" id="cp-old" required></div>
-                <div class="f-g"><label data-i18n="newPass">رمز جدید</label><input type="password" id="cp-new" required minlength="4"></div>
-                <button class="btn btn-p" style="width:100%"><span data-i18n="changePassBtn">تغییر رمز</span></button>
-              </form>
-            </div>
-            <div class="panel">
-              <div class="panel-h"><span class="glow" data-i18n="panelUpdate">بروزرسانی پنل</span></div>
-              <div class="px-hint" data-i18n="panelUpdateHint">آخرین نسخه پنل دریافت و نصب می‌شود.</div>
-              <button class="btn btn-p" style="width:100%;margin-top:10px" id="upd-btn" onclick="runPanelUpdate()"><span data-i18n="updatePanel">بروزرسانی</span></button>
-              <pre id="upd-log" dir="ltr" style="display:none;margin-top:10px;padding:10px;border-radius:8px;background:var(--bg2,#111);color:var(--green);font-size:11px;max-height:220px;overflow-y:auto;white-space:pre-wrap;font-family:monospace"></pre>
-            </div>
-            <div class="panel">
-              <div class="panel-h"><span class="glow" data-i18n="backupRestore">بکاپ و بازیابی</span></div>
-              <div class="px-hint" data-i18n="backupRestoreHint">بکاپ کامل پنل به صورت JSON.</div>
-              <div style="display:flex;gap:8px;margin-top:10px">
-                <button class="btn btn-p" style="flex:1" onclick="downloadBackup()"><span data-i18n="backup">بکاپ (دانلود)</span></button>
-                <button class="btn btn-g" style="flex:1" onclick="document.getElementById('restore-file').click()"><span data-i18n="restore">بازیابی (آپلود)</span></button>
-              </div>
-              <input type="file" id="restore-file" accept=".json,application/json" style="display:none" onchange="uploadRestore(this)">
-              <pre id="restore-log" dir="ltr" style="display:none;margin-top:10px;padding:10px;border-radius:8px;background:var(--bg2,#111);color:var(--orange);font-size:11px;max-height:150px;overflow-y:auto;white-space:pre-wrap;font-family:monospace"></pre>
+
+        <div class="panel">
+          <div class="panel-h"><span class="glow" data-i18n="appearance">تنظیمات ظاهری</span></div>
+          <div class="set-row">
+            <span class="set-lbl" data-i18n="themeMode">حالت نمایش</span>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-sm btn-g" onclick="setTheme('dark')"><span data-i18n="dark">تاریک</span></button>
+              <button class="btn btn-sm btn-g" onclick="setTheme('light')"><span data-i18n="light">روشن</span></button>
             </div>
           </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h"><span class="glow" data-i18n="panelMusic">Panel Music</span></div>
+          <div class="set-row"><span class="set-lbl" data-i18n="bgMusic">Background Music</span>
+            <button type="button" class="ios-switch on" id="audio-autoplay" onclick="togglePanelAudio()" data-i18n-title="toggleMusic" title="روشن/خاموش"></button>
+          </div>
+          <div class="sub-link" id="audio-file" style="margin-top:8px;margin-bottom:0">static/music-panel.mp3</div>
+          <audio id="panel-audio-player" loop style="display:none"></audio>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h"><span class="glow" data-i18n="changePassword">Change Password</span></div>
+          <form onsubmit="changePassword(event)">
+            <div class="f-g"><label data-i18n="curPass">رمز فعلی</label><input type="password" id="cp-old" required></div>
+            <div class="f-g"><label data-i18n="newPass">رمز جدید</label><input type="password" id="cp-new" required minlength="4"></div>
+            <button class="btn btn-p" style="width:100%"><span data-i18n="changePassBtn">تغییر رمز</span></button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h"><span class="glow" data-i18n="panelUpdate">بروزرسانی پنل</span></div>
+          <div class="px-hint" data-i18n="panelUpdateHint">با زدن این دکمه، آخرین نسخه ریپو از GitHub دریافت و روی سرور نصب می‌شود (amirh00sain/SpiderPanel). بعد از اتمام، پنل را در Railway ری‌استارت/ری‌دپلوی کنید تا نسخه جدید اعمال شود.</div>
+          <button class="btn btn-p" style="width:100%;margin-top:10px" id="upd-btn" onclick="runPanelUpdate()"><span data-i18n="updatePanel">بروزرسانی</span></button>
+          <pre id="upd-log" dir="ltr" style="display:none;margin-top:10px;padding:10px;border-radius:8px;background:var(--bg2,#111);color:var(--green);font-size:11px;max-height:220px;overflow-y:auto;white-space:pre-wrap;font-family:monospace"></pre>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h"><span class="glow" data-i18n="backupRestore">بکاپ و بازیابی</span></div>
+          <div class="px-hint" data-i18n="backupRestoreHint">بکاپ کامل شامل: کاربران، لینک‌ها، اینباندها، اسکن‌ها، تنظیمات، رمز، گروه‌ها و تنظیمات Worker. فایل JSON دانلود/آپلود می‌شود.</div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn btn-p" style="flex:1" onclick="downloadBackup()"><span data-i18n="backup">بکاپ (دانلود)</span></button>
+            <button class="btn btn-g" style="flex:1" onclick="document.getElementById('restore-file').click()"><span data-i18n="restore">بازیابی (آپلود)</span></button>
+          </div>
+          <input type="file" id="restore-file" accept=".json" style="display:none" onchange="uploadRestore(this)">
+          <pre id="restore-log" dir="ltr" style="display:none;margin-top:10px;padding:10px;border-radius:8px;background:var(--bg2,#111);color:var(--orange);font-size:11px;max-height:150px;overflow-y:auto;white-space:pre-wrap;font-family:monospace"></pre>
+        </div>
+      </div>
+
+      <!-- AUTO CONFIG TAB -->
+      <div class="tab-content hidden" id="tab-autoconfig">
+        <div class="panel">
+          <div style="text-align:center;padding:30px 0 20px">
+            <button class="btn btn-p" id="ac-auto-btn" onclick="acStart()" style="font-size:16px;padding:14px 60px;border-radius:14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-3px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <span data-i18n="acAutoBtn">Auto</span>
+            </button>
+            <div class="px-hint" style="margin-top:12px" data-i18n="acHint">اسکن کامل خودکار: پینگ دامنه‌ها → انتخاب Railway/Cloudflare → اسکن IP → تست دامنه‌های TCP → اسکن SNI → پینگ نهایی پنل. همه مراحل با اینترنت خود شما انجام می‌شود.</div>
+          </div>
+          <!-- Step 0: domain input -->
+          <div class="f-g" id="ac-domain-wrap" style="display:flex;gap:8px">
+            <input type="text" id="ac-domain" dir="ltr" placeholder="your-panel.up.railway.app" style="flex:1">
+          </div>
+          <!-- Progress log -->
+          <div class="scn-list" id="ac-log" style="margin-top:12px;display:none"></div>
+          <!-- Results -->
+          <div id="ac-results" style="margin-top:12px"></div>
+        </div>
+      </div>
+
+      <!-- TUNNEL TAB -->
+      <div class="tab-content hidden" id="tab-tunnel">
+        <div class="panel" id="tunnel-notready">
+          <div class="panel-h"><span class="glow" data-i18n="tunnel">Tunnel</span></div>
+          <div class="px-hint" data-i18n="tunnelNotReady">ابتدا یک Worker در تب Worker بسازید — بخش Tunnel بعد از ساخت Worker فعال می‌شود.</div>
+        </div>
+        <div class="panel hidden" id="tunnel-ready">
+          <div class="panel-h" style="justify-content:space-between">
+            <span class="glow" data-i18n="tunnel">Tunnel</span>
+            <span id="tn-status-badge" class="badge badge-g" style="margin-right:auto"></span>
+          </div>
+          <div class="set-row">
+            <span class="set-lbl" data-i18n="tunnelPath">مسیر اتصال</span>
+            <span dir="ltr" style="font-size:12px;color:var(--txt)">User → Railway → Cloudflare Worker → Site</span>
+          </div>
+          <div class="set-row">
+            <span class="set-lbl" data-i18n="workerPing">پینگ سرور تا Worker</span>
+            <span id="tn-ping" dir="ltr" style="font-size:12px;color:var(--neon)">--</span>
+          </div>
+          <div class="set-row">
+            <span class="set-lbl" data-i18n="workerUrl">Worker URL</span>
+            <a id="tn-url" href="#" target="_blank" rel="noopener" dir="ltr" style="color:var(--neon);font-size:12px"></a>
+          </div>
+          <div class="set-row">
+            <span class="set-lbl" data-i18n="tunnelKv">KV اختصاصی Tunnel</span>
+            <span id="tn-kv" dir="ltr" style="font-size:11px;font-family:monospace;color:var(--txt2);word-break:break-all"></span>
+          </div>
+          <div class="set-row">
+            <span class="set-lbl" data-i18n="tunnelInboundPath">اینباند (TLS WS)</span>
+            <span id="tn-inbound-path" dir="ltr" style="font-size:11px;font-family:monospace;color:var(--txt)"></span>
+          </div>
+          <div class="set-row">
+            <span class="set-lbl" data-i18n="lastHeartbeat">آخرین Heartbeat</span>
+            <span id="tn-heartbeat" dir="ltr" style="font-size:12px;color:var(--txt2)"></span>
+          </div>
+
+          <!-- REVERSE (below tunnel info) -->
+          <div class="panel-h" style="margin-top:18px;border-top:1px solid var(--border);padding-top:14px">
+            <span class="glow" data-i18n="reverse">Reverse</span>
+          </div>
+          <div class="set-row" style="border-bottom:none">
+            <span class="set-lbl">
+              <span data-i18n="reverseSwitch">حالت Reverse</span>
+              <div class="px-hint" style="font-size:10px;margin-top:2px" data-i18n="reverseHint">با روشن کردن این سوییچ، مسیر اتصال برعکس می‌شود: User → Worker → Railway → Site. دامنه کانفیگ، دامنه Worker و مسیر /reverse/{uuid} خواهد بود.</div>
+            </span>
+            <button type="button" class="ios-switch" id="tn-reverse-sw" onclick="tunnelToggleReverse(this)" title="Reverse"></button>
+          </div>
+          <div id="tn-reverse-info" class="hidden">
+            <div class="set-row">
+              <span class="set-lbl" data-i18n="tunnelPath">مسیر اتصال</span>
+              <span dir="ltr" style="font-size:12px;color:var(--txt)">User → Cloudflare Worker → Railway → Site</span>
+            </div>
+            <div class="set-row">
+              <span class="set-lbl" data-i18n="workerPing">پینگ سرور تا Worker</span>
+              <span id="tn-reverse-ping" dir="ltr" style="font-size:12px;color:var(--neon)">--</span>
+            </div>
+            <div class="set-row">
+              <span class="set-lbl" data-i18n="tunnelInboundPath">دامنه و مسیر</span>
+              <span id="tn-reverse-path" dir="ltr" style="font-size:11px;font-family:monospace;color:var(--txt)"></span>
+            </div>
+            <div class="set-row">
+              <span class="set-lbl" data-i18n="tunnelKv">KV اختصاصی Reverse</span>
+              <span id="tn-reverse-kv" dir="ltr" style="font-size:11px;font-family:monospace;color:var(--txt2);word-break:break-all"></span>
+            </div>
+          </div>
+
+          <div class="scn-list" id="tn-logs" style="margin-top:10px"></div>
+          <button class="btn btn-p" style="width:100%;margin-top:12px" id="tn-create-btn" onclick="tunnelCreate()"><span data-i18n="tunnelCreate">ایجاد اینباند Tunnel</span></button>
         </div>
       </div>
 
@@ -1494,7 +1571,7 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
   <div class="modal-t"><span class="glow" data-i18n="createUser">ایجاد کاربر جدید</span></div>
   <form onsubmit="submitCreateUser(event)">
     <div class="f-r">
-      <div class="f-g"><label data-i18n="username">نام کاربری</label><input type="text" id="cu-name" placeholder="خالی = نام تصادفی"></div>
+      <div class="f-g"><label data-i18n="username">نام کاربری</label><input type="text" id="cu-name" required></div>
       <div class="f-g"><label data-i18n="conn">اتصال همزمان</label><input type="number" id="cu-conn" placeholder="∞ نامحدود"></div>
     </div>
     <div class="f-r">
@@ -1509,6 +1586,11 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
       <div id="cu-inbound" class="f-r" style="gap:8px;margin-top:6px"></div>
     </div>
     <div class="f-g" style="display:flex;align-items:center;gap:8px;margin-top:8px">
+      <div class="set-row" style="padding:8px 0;border-top:1px solid var(--border)">
+        <span class="set-lbl" data-i18n="sniSpoofV2box">Sni Spoof برای v2box</span>
+        <button type="button" class="ios-switch" id="cu-sni-spoof" onclick="cuToggleSniSpoof(this)" data-i18n-title="sniSpoofV2box" title="Sni Spoof"></button>
+      </div>
+      <div class="px-hint" data-i18n="sniSpoofV2boxHint" style="margin-top:-6px;margin-bottom:6px">وقتی فعال باشد، یک کپی از کانفیگ‌های اصلی TLS WS و Worker ساخته و snispoofing روی آن اعمال می‌شود. روی Reality/XHTTP Reality اعمال نمی‌شود.</div>
     </div>
     <div class="modal-btns">
       <button type="button" class="btn btn-g" onclick="closeModal('mod-user')"><span data-i18n="cancel">انصراف</span></button>
@@ -1543,22 +1625,6 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
   </form>
 </div></div>
 
-<!-- NODE MODALS -->
-<div class="modal" id="mod-node"><div class="modal-c" style="max-width:520px">
-  <div class="modal-t"><span class="glow" data-i18n="addNode">Add Node</span></div>
-  <form onsubmit="submitNode(event)">
-    <div class="f-g"><label data-i18n="nodeName">Node Name</label><input id="node-name" placeholder="Germany"></div>
-    <div class="f-g"><label data-i18n="panelDomain">Panel Domain</label><input id="node-url" type="url" placeholder="https://node.example.com" required></div>
-    <div class="f-g"><label data-i18n="apiKey">API Key</label><input id="node-key" type="password" required></div>
-    <div class="modal-btns"><button type="button" class="btn btn-g" onclick="closeModal('mod-node')" data-i18n="cancel">Cancel</button><button class="btn btn-p" data-i18n="connect">Connect</button></div>
-  </form>
-</div></div>
-<div class="modal" id="mod-node-picker"><div class="modal-c" style="max-width:520px">
-  <div class="modal-t"><span class="glow" data-i18n="selectNodes">Select Nodes</span></div>
-  <div id="node-picker-list"></div>
-  <div class="modal-btns"><button class="btn btn-p" onclick="closeModal('mod-node-picker')" data-i18n="close">Close</button></div>
-</div></div>
-
 <!-- INBOUND MODAL -->
 <div class="modal" id="mod-inbound"><div class="modal-c" style="max-width:560px">
   <div class="modal-t"><span class="glow" id="ib-title">ایجاد اینباند جدید</span></div>
@@ -1566,21 +1632,18 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
     <input type="hidden" id="ib-id">
     <div class="f-g"><label data-i18n="inboundName">نام اینباند</label><input type="text" id="ib-name" required data-i18n-placeholder="inboundName" placeholder="مثال: Main-WS"></div>
     <div class="f-r">
-      <div class="f-g"><label data-i18n="inboundType">Inbound Type</label><select id="ib-type" onchange="onInboundTypeChange()">
-        <option value="config">Config</option><option value="telegram">Telegram Proxy</option>
-      </select></div>
-      <div class="f-g" id="ib-protocol-wrap"><label data-i18n="protocol">Protocol</label><select id="ib-protocol" onchange="onProtocolChange()">
-        <option value="vless">VLESS</option><option value="vmess">VMess</option><option value="trojan">Trojan</option><option value="shadowsocks">Shadowsocks</option>
+      <div class="f-g"><label>Protocol</label><select id="ib-protocol" onchange="onProtocolChange()">
+        <option value="vless">VLESS</option>
+        <option value="wireguard">WireGuard / AmneziaWG</option>
+        <option value="telegram">Telegram Proxy</option>
       </select></div>
     </div>
 
-    <!-- Config server fields -->
-    <div id="ib-config-fields">
-      <div class="f-r">
-        <div class="f-g"><label data-i18n="serverHost">Server Host</label><input type="text" id="ib-server-host" dir="ltr" placeholder="panel.example.com"></div>
-        <div class="f-g"><label data-i18n="internalPort">Internal Port</label><input type="number" id="ib-port" value="443" min="1" max="65535" dir="ltr"></div>
-      </div>
-      <div class="f-g"><label data-i18n="externalPort">External Port</label><input type="number" id="ib-extport" value="443" min="1" max="65535" dir="ltr"></div>
+    <!-- Internal listen port: the port the server/Xray actually listens on. -->
+    <div class="f-g" id="ib-internal-port-wrap">
+      <label>Internal Port (پورت داخلی)</label>
+      <input type="number" id="ib-port" value="443" min="1" max="65535" dir="ltr" placeholder="443">
+      <div class="px-hint" style="font-size:10px">این پورت پورت واقعی Listen سرور است.</div>
     </div>
 
     <div id="ib-tls-fields">
@@ -1616,6 +1679,48 @@ input,textarea,select,button{user-select:none;-webkit-user-select:none}
       <button type="button" class="btn btn-sm btn-b" onclick="generateRealityKeysUI()" style="width:100%;margin-bottom:10px"><span data-i18n="genRealityKey">تولید کلید Reality (x25519)</span></button>
       <div class="f-g"><label data-i18n="shortIds">Short IDs</label><div style="display:flex;gap:6px"><input type="text" id="ib-shortids" value="" dir="ltr" data-i18n-placeholder="hex8" placeholder="هگز ۸ رقمی — خالی = تصادفی" style="flex:1"><button type="button" class="btn btn-sm" onclick="generateShortId()" style="white-space:nowrap"><span data-i18n="generate">+ تولید</span></button></div></div>
       <div class="f-g"><label data-i18n="spiderx">SpiderX</label><input type="text" id="ib-spiderx" dir="ltr" placeholder="/" value="/"></div>
+    </div>
+
+    <!-- WireGuard / AmneziaWG fields -->
+    <div id="ib-wg-fields" class="hidden">
+      <div class="divider"></div>
+      <div style="font-size:11px;color:var(--neon);font-weight:700;margin-bottom:8px">AmneziaWG Settings</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:8px 12px;background:rgba(0,225,193,.06);border:1px solid var(--border);border-radius:10px">
+        <button type="button" class="ios-switch on" id="ib-wg-warp" onclick="this.classList.toggle('on')"></button>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--txt)">Cloudflare WARP Mode</div>
+          <div style="font-size:10px;color:var(--txt2)">فعال: از زیرساخت WARP Cloudflare استفاده می‌شود. غیرفعال: سرور WireGuard سفارشی.</div>
+        </div>
+      </div>
+      <div class="f-g"><label>Endpoint</label>
+        <select id="ib-wg-endpoint" style="width:100%;padding:9px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:10px;color:var(--txt);font-size:12px;font-family:monospace">
+          <option value="">Loading...</option>
+        </select>
+      </div>
+      <div class="f-r">
+        <div class="f-g"><label>MTU</label><input type="number" id="ib-wg-mtu" value="1280" dir="ltr"></div>
+        <div class="f-g"><label>Address</label><input type="text" id="ib-wg-address" value="172.16.0.2/32" dir="ltr"></div>
+      </div>
+      <div class="f-g"><label>DNS</label><input type="text" id="ib-wg-dns" value="1.1.1.1,1.0.0.1" dir="ltr"></div>
+      <div class="f-g"><label>Server Public Key</label><input type="text" id="ib-wg-pubkey" dir="ltr" placeholder="Auto-generated"></div>
+      <button type="button" class="btn btn-sm btn-b" onclick="generateWGKeys()" style="width:100%;margin-bottom:10px">تولید کلید WireGuard</button>
+      <div style="font-size:10px;color:var(--txt2);margin-bottom:8px">AmneziaWG Parameters</div>
+      <div class="f-r">
+        <div class="f-g"><label>Jc</label><input type="number" id="ib-wg-jc" value="3" dir="ltr"></div>
+        <div class="f-g"><label>Jmin</label><input type="number" id="ib-wg-jmin" value="1" dir="ltr"></div>
+        <div class="f-g"><label>Jmax</label><input type="number" id="ib-wg-jmax" value="3" dir="ltr"></div>
+      </div>
+      <div class="f-r">
+        <div class="f-g"><label>S1</label><input type="number" id="ib-wg-s1" value="0" dir="ltr"></div>
+        <div class="f-g"><label>S2</label><input type="number" id="ib-wg-s2" value="0" dir="ltr"></div>
+      </div>
+      <div class="f-r">
+        <div class="f-g"><label>H1</label><input type="number" id="ib-wg-h1" value="1" dir="ltr"></div>
+        <div class="f-g"><label>H2</label><input type="number" id="ib-wg-h2" value="2" dir="ltr"></div>
+        <div class="f-g"><label>H3</label><input type="number" id="ib-wg-h3" value="3" dir="ltr"></div>
+        <div class="f-g"><label>H4</label><input type="number" id="ib-wg-h4" value="4" dir="ltr"></div>
+      </div>
+      <div class="f-g"><label>I1</label><input type="text" id="ib-wg-i1" dir="ltr" placeholder="Optional"></div>
     </div>
 
     <!-- Telegram Proxy fields -->
@@ -1698,7 +1803,7 @@ var selectedTheme = localStorage.getItem('spider-theme') || 'dark';
 var LANG = localStorage.getItem('spider-lang') || 'fa';
 var I18N = {
   fa: {
-    'dash': 'داشبورد', 'nodes': 'نودها', 'addNode': 'افزودن Node', 'nodeName': 'نام Node', 'panelDomain': 'دامنه پنل', 'apiKey': 'API Key', 'nodeApiKey': 'کلید API نود', 'serverIp': 'سرور پنل', 'regenerate': 'تولید مجدد', 'connect': 'اتصال', 'selectNodes': 'انتخاب Node ها', 'nodeConnected': 'Node متصل شد', 'nodeOffline': 'آفلاین', 'nodeOnline': 'آنلاین', 'users': 'کاربران', 'inbounds': 'اینباندها', 'scanner': 'اسکنر IP', 'worker': 'Worker', 'settings': 'تنظیمات', 'contact': 'Contact Me', 'logout': 'خروج',
+    'dash': 'داشبورد', 'users': 'کاربران', 'inbounds': 'اینباندها', 'scanner': 'اسکنر IP', 'worker': 'Worker', 'settings': 'تنظیمات', 'contact': 'Contact Me', 'logout': 'خروج',
     'workerSetupTip': 'پنل را به Cloudflare متصل کنید تا یک Worker جدید با ساب‌دامین اختصاصی و KV اختصاصی ساخته شود. پنل مثل یک ریموت، کانفیگ‌ها را به Worker می‌فرستد.', 'cfToken': 'Cloudflare API Token', 'getToken': 'گرفتن توکن', 'cfAccountId': 'Account ID', 'cfWorkerName': 'Worker Name', 'cfWorkerDomain': 'Worker Domain', 'createNewWorker': 'ساخت Worker جدید', 'cfConnect': 'اتصال و Deploy', 'connected': 'متصل', 'disconnected': 'قطع', 'workerStatus': 'وضعیت', 'remoteStatus': 'وضعیت ریموت', 'lastHeartbeat': 'آخرین Heartbeat', 'workerId': 'Worker ID', 'kvId': 'KV ID', 'onlineUsers': 'کاربران آنلاین', 'workerTraffic': 'مصرف Worker', 'workerUrl': 'Worker URL', 'lastSync': 'آخرین Sync', 'lastError': 'آخرین خطا', 'proxyPool': 'Proxy IP Pool', 'addProxy': 'افزودن کشور', 'workerSettings': 'تنظیمات Worker', 'removeConn': 'حذف اتصال Worker', 'noProxyYet': 'هنوز کشوری اضافه نکرده‌اید', 'connecting': 'در حال ساخت...', 'workerConnected': 'Worker جدید ساخته و Deploy شد', 'syncing': 'در حال Sync...', 'synced': 'Sync شد', 'confirmRemoveWorker': 'اتصال Worker حذف شود؟', 'workerRemoved': 'اتصال Worker حذف شد', 'proxyCodePrompt': 'کد کشور (مثلا de):', 'proxyCountryPrompt': 'نام کشور:', 'proxyHostPrompt': 'آدرس Proxy IP (مثلا de.example.com):', 'proxyPortPrompt': 'پورت Proxy IP:', 'proxySaved': 'کشور ذخیره و Worker بروزرسانی شد', 'confirmDelProxy': 'این کشور حذف شود؟', 'proxyDeleted': 'کشور حذف شد', 'workerFillAll': 'همه فیلدها را پر کنید', 'workerProxyEnabled': 'Worker Proxy IP', 'workerProxyNone': 'بدون Proxy', 'workerRouteTip': 'کانفیگ کاربر روی دامنه Worker با مسیر /route/{کد کشور} ساخته می‌شود و از Railway عبور نمی‌کند.', 'workerAutoName': 'Worker جدید با نام تصادفی (spider-xxxxxx)، ساب‌دامین اختصاصی و KV اختصاصی ساخته می‌شود — نیازی به ورود نام نیست.', 'proxySource': 'منبع پروکسی روزانه', 'autoSyncHourly': 'بروزرسانی خودکار (ساعتی)', 'updateNow': 'بروزرسانی از منبع', 'updatingFromSource': 'در حال بروزرسانی از منبع', 'sourceUpdated': 'بروزرسانی شد', 'sourceError': 'خطا در بروزرسانی منبع', 'countries': 'کشور', 'syncsDone': 'تعداد بروزرسانی‌ها', 'pickCountry': 'یک کشور انتخاب کنید',
     'tab.dash': 'داشبورد', 'tab.users': 'مدیریت کاربران', 'tab.inbounds': 'مدیریت اینباندها', 'tab.scanner': 'اسکنر آی‌پی', 'tab.settings': 'تنظیمات',
     'inboundFixedHint': 'فقط اینباندهای پیش‌فرض پنل استفاده می‌شوند. WS/TLS به‌صورت خودکار با دامنه اصلی پنل آماده است؛ Reality را با دامنه و پورت خودتان تکمیل کنید (کلید pbk به‌صورت خودکار ساخته می‌شود).', 'inboundFixed': 'افزودن اینباند غیرفعال است — فقط اینباندهای پیش‌فرض.', 'inboundAuto': 'این اینباند خودکار است و نیازی به تنظیم ندارد.',
@@ -1710,7 +1815,7 @@ var I18N = {
     'scnRailwayTip': 'اسکن زنده از رنج‌های اعلام‌شده Railway (اروپا). IPهای پاسخ‌دهنده مرتب و ۱۰ تای اول به صورت خودکار ذخیره می‌شوند.',
     'scnTcpTip': 'دامنه موردنظر را وارد کنید؛ IP دامنه (DNS) نمایش داده می‌شود و پینگ TCP آن به صورت زنده گزارش می‌شود. دامنه‌های Railway به صورت پیش‌فرض وجود دارند و قابل افزودن/حذف هستند.',
     'addDomain': 'افزودن دامنه', 'checkDomains': 'شروع بررسی دامنه‌ها', 'checking': 'در حال بررسی...', 'checkingDomains': 'در حال بررسی دامنه‌ها...',
-    'advanced':'Advanced', 'inboundType':'Inbound Type', 'protocol':'Protocol', 'serverHost':'Server Host', 'internalPort':'Internal Port', 'externalPort':'External Port', 'serverResources':'Server Resources', 'appearance': 'تنظیمات ظاهری', 'themeMode': 'حالت نمایش', 'fixedTheme': 'فونت و رنگ هماهنگ با صفحه ساب + iOS است.', 'theme': 'تم', 'dark': 'تاریک', 'light': 'روشن', 'color': 'رنگ', 'lightMode': 'حالت روشن فعال شد', 'darkMode': 'حالت تاریک فعال شد',
+    'serverResources': 'Server Resources', 'appearance': 'تنظیمات ظاهری', 'themeMode': 'حالت نمایش', 'fixedTheme': 'فونت و رنگ هماهنگ با صفحه ساب + iOS است.', 'theme': 'تم', 'dark': 'تاریک', 'light': 'روشن', 'color': 'رنگ', 'lightMode': 'حالت روشن فعال شد', 'darkMode': 'حالت تاریک فعال شد',
     'red': 'قرمز', 'green': 'سبز', 'blue': 'آبی',
     'panelMusic': 'Panel Music', 'bgMusic': 'Background Music', 'toggleMusic': 'روشن/خاموش', 'changePassword': 'Change Password', 'curPass': 'رمز فعلی', 'newPass': 'رمز جدید', 'changePassBtn': 'تغییر رمز',
     'contactSub': 'برای پشتیبانی و همکاری با من در ارتباط باشید',
@@ -1757,7 +1862,7 @@ var I18N = {
     'login': { 'signIn': 'Sign In' }
   },
   en: {
-    'dash': 'Dashboard', 'nodes': 'Nodes', 'addNode': 'Add Node', 'nodeName': 'Node Name', 'panelDomain': 'Panel Domain', 'apiKey': 'API Key', 'nodeApiKey': 'Node API Key', 'serverIp': 'Panel Server', 'regenerate': 'Regenerate', 'connect': 'Connect', 'selectNodes': 'Select Nodes', 'nodeConnected': 'Node connected', 'nodeOffline': 'Offline', 'nodeOnline': 'Online', 'users': 'Users', 'inbounds': 'Inbounds', 'scanner': 'IP Scanner', 'worker': 'Worker', 'settings': 'Settings', 'contact': 'Contact Me', 'logout': 'Logout',
+    'dash': 'Dashboard', 'users': 'Users', 'inbounds': 'Inbounds', 'scanner': 'IP Scanner', 'worker': 'Worker', 'settings': 'Settings', 'contact': 'Contact Me', 'logout': 'Logout',
     'workerSetupTip': 'Connect the panel to Cloudflare to create a brand-new Worker with its own dedicated subdomain and KV. The panel acts as a remote control, pushing configs to the Worker.', 'cfToken': 'Cloudflare API Token', 'getToken': 'Get Token', 'cfAccountId': 'Account ID', 'cfWorkerName': 'Worker Name', 'cfWorkerDomain': 'Worker Domain', 'createNewWorker': 'Create New Worker', 'cfConnect': 'Connect & Deploy', 'connected': 'Connected', 'disconnected': 'Disconnected', 'workerStatus': 'Status', 'remoteStatus': 'Remote Status', 'lastHeartbeat': 'Last Heartbeat', 'workerId': 'Worker ID', 'kvId': 'KV ID', 'onlineUsers': 'Online Users', 'workerTraffic': 'Worker Traffic', 'workerUrl': 'Worker URL', 'lastSync': 'Last Sync', 'lastError': 'Last Error', 'proxyPool': 'Proxy IP Pool', 'addProxy': 'Add Country', 'workerSettings': 'Worker Settings', 'removeConn': 'Remove Worker Connection', 'noProxyYet': 'No country added yet', 'connecting': 'Creating...', 'workerConnected': 'New worker created & deployed', 'syncing': 'Syncing...', 'synced': 'Synced', 'confirmRemoveWorker': 'Remove the Worker connection?', 'workerRemoved': 'Worker connection removed', 'proxyCodePrompt': 'Country code (e.g. de):', 'proxyCountryPrompt': 'Country name:', 'proxyHostPrompt': 'Proxy IP host (e.g. de.example.com):', 'proxyPortPrompt': 'Proxy IP port:', 'proxySaved': 'Country saved, worker updated', 'confirmDelProxy': 'Delete this country?', 'proxyDeleted': 'Country deleted', 'workerFillAll': 'Fill in all fields', 'workerProxyEnabled': 'Worker Proxy IP', 'workerProxyNone': 'No Proxy', 'workerRouteTip': 'The user config is built on the Worker domain with a /route/{code} path — traffic never crosses Railway.', 'workerAutoName': 'A new worker is created with a random name (spider-xxxxxx), its own subdomain and its own dedicated KV — no name entry needed.', 'proxySource': 'Daily Proxy Source', 'autoSyncHourly': 'Auto-update (hourly)', 'updateNow': 'Update Now', 'updatingFromSource': 'Updating from source', 'sourceUpdated': 'Updated', 'sourceError': 'Failed to update source', 'countries': 'countries', 'syncsDone': 'Syncs done', 'pickCountry': 'Pick a country',
     'tab.dash': 'Dashboard', 'tab.users': 'Manage Users', 'tab.inbounds': 'Manage Inbounds', 'tab.scanner': 'IP Scanner', 'tab.settings': 'Settings',
     'inboundFixedHint': 'Only the panel’s default inbounds are used. WS/TLS is ready automatically with the panel’s main domain; fill Reality’s domain & ports yourself (pbk is auto-generated).', 'inboundFixed': 'Adding inbounds is disabled — only the default inbounds.', 'inboundAuto': 'This inbound is automatic — nothing to configure.',
@@ -1769,7 +1874,7 @@ var I18N = {
     'scnRailwayTip': 'Live scan of announced Railway ranges (Europe). Working IPs are sorted and the first 10 are auto-saved.',
     'scnTcpTip': 'Enter a domain; its IP (DNS) is resolved and its TCP ping is reported live. Railway domains are pre-loaded and can be added/removed.',
     'addDomain': 'Add Domain', 'checkDomains': 'Check Domains', 'checking': 'Checking...', 'checkingDomains': 'Checking domains...',
-    'advanced':'Advanced', 'inboundType':'Inbound Type', 'protocol':'Protocol', 'serverHost':'Server Host', 'internalPort':'Internal Port', 'externalPort':'External Port', 'serverResources':'Server Resources', 'appearance': 'Appearance', 'themeMode': 'Display Mode', 'fixedTheme': 'Font & colors matched to the sub page + iOS.', 'theme': 'Theme', 'dark': 'Dark', 'light': 'Light', 'color': 'Color', 'lightMode': 'Light mode enabled', 'darkMode': 'Dark mode enabled',
+    'serverResources': 'Server Resources', 'appearance': 'Appearance', 'themeMode': 'Display Mode', 'fixedTheme': 'Font & colors matched to the sub page + iOS.', 'theme': 'Theme', 'dark': 'Dark', 'light': 'Light', 'color': 'Color', 'lightMode': 'Light mode enabled', 'darkMode': 'Dark mode enabled',
     'red': 'Red', 'green': 'Green', 'blue': 'Blue',
     'panelMusic': 'Panel Music', 'bgMusic': 'Background Music', 'toggleMusic': 'On/Off', 'changePassword': 'Change Password', 'curPass': 'Current Password', 'newPass': 'New Password', 'changePassBtn': 'Change Password',
     'contactSub': 'Get in touch with me for support and collaboration',
@@ -2079,7 +2184,6 @@ function switchTab(tab, el) {
   if (tab === 'dashboard') loadDashboard();
   if (tab === 'users') loadUsers();
   if (tab === 'inbounds') loadInbounds();
-  if (tab === 'nodes') loadNodes();
   if (tab === 'scanner') scnInit();
   if (tab === 'worker') loadWorker();
   if (tab === 'tunnel') loadTunnel();
@@ -2093,10 +2197,8 @@ function toggleSidebar() { $id('sidebar').classList.contains('open') ? closeSide
 // ─── Load All ───
 async function loadAll() {
   loadDashboard();
-  loadSettingsIdentity();
   loadUsers();
   loadInbounds();
-  loadNodes();
   loadProxyCountries();
   // Keep the worker proxy pool warm so the create-user country dropdowns work
   // even before the Worker tab is opened.
@@ -2121,7 +2223,7 @@ async function loadDashboard() {
     var s = await api('/stats');
     var html = '<div class="stats">';
     html += statCard(iconUsers, '<span id="dash-users">' + s.active_users + ' / ' + s.total_users + '</span>', t('activeUsers'));
-    html += statCard(iconTraffic, '<span id="dash-traffic">' + fmtBytes((s.traffic_usage_gb || 0) * 1073741824) + '</span><small id="dash-traffic-detail" style="display:block;margin-top:5px;font-size:9px;opacity:.7">↑ ' + fmtBytes(s.traffic_sent_bytes||0) + ' · ↓ ' + fmtBytes(s.traffic_received_bytes||0) + '</small>', t('trafficUsed'));
+    html += statCard(iconTraffic, '<span id="dash-traffic">' + fmtBytes((s.traffic_usage_gb || 0) * 1073741824) + '</span>', t('trafficUsed'));
     html += statCard(iconConn, '<span id="dash-conn">' + (s.active_connections || '۰') + '</span>', t('activeConns'));
     html += statCard(iconUptime, '<span id="dash-uptime">...</span>', t('uptime'));
     html += '</div>';
@@ -2155,7 +2257,7 @@ async function refreshLiveStats() {
     var uptEl = $id('live-uptime'); if (uptEl) uptEl.textContent = fmtUptime(st.uptime_seconds);
     var duptEl = $id('dash-uptime'); if (duptEl) duptEl.textContent = fmtUptime(st.uptime_seconds);
     var connEl = $id('dash-conn'); if (connEl) connEl.textContent = String(st.active_connections || 0);
-    var trEl = $id('dash-traffic'); if (trEl) trEl.textContent = fmtBytes(Number(st.traffic_total_bytes || ((st.total_traffic_used_tb || 0) * 1099511627776))); var td=$id('dash-traffic-detail'); if(td) td.textContent='↑ '+fmtBytes(st.traffic_sent_bytes||0)+' · ↓ '+fmtBytes(st.traffic_received_bytes||0);
+    var trEl = $id('dash-traffic'); if (trEl) trEl.textContent = fmtBytes((st.total_traffic_used_tb || 0) * 1099511627776);
     var usrEl = $id('dash-users'); if (usrEl) usrEl.textContent = (st.active_users || 0) + ' / ' + (st.total_users || 0);
     var statusEl = $id('dash-server-status'); if (statusEl) {
       var ss = String(st.server_status || 'healthy');
@@ -2230,8 +2332,7 @@ function _userRow(u) {
   r += '<td>' + _userExp(u) + '</td>';
   r += '<td>' + (u.concurrent_connections || '۲') + '</td>';
   r += '<td>' + _userStatus(u) + '</td>';
-  var nodeCell = (u.node_configs||[]).map(function(n){return '<span class="badge badge-b">'+flagFor(n.country)+' '+esc(n.node_name||'Node')+'</span>';}).join(' ');
-  r += '<td><span class="badge badge-b">' + esc(inboundName) + '</span>' + (u.proxy_country ? ' <span class="badge badge-p">' + esc(u.proxy_country) + '</span>' : '') + (nodeCell ? ' '+nodeCell : '') + '</td>';
+  r += '<td><span class="badge badge-b">' + esc(inboundName) + '</span>' + (u.proxy_country ? ' <span class="badge badge-p">' + esc(u.proxy_country) + '</span>' : '') + '</td>';
   r += '<td>' + _userActions(u) + '</td>';
   return r;
 }
@@ -2240,7 +2341,6 @@ function _userCard(u) {
   var inboundName = u.inbound_name || (u.inbound_id ? u.inbound_id.substring(0,8) : t('default'));
   var expText = _userExp(u);
   var countryBadge = u.proxy_country ? '<span class="badge badge-p">' + esc(u.proxy_country) + '</span>' : '';
-  var nodeBadges = (u.node_configs||[]).map(function(n){return '<span class="badge badge-b">'+flagFor(n.country)+' '+esc(n.node_name||'Node')+'</span>';}).join(' ');
   return '<div class="u-card">' +
     '<div class="u-card-top"><strong class="u-card-name">' + esc(u.username) + '</strong>' + _userStatus(u) + '</div>' +
     '<div class="u-card-traffic">' + _userTraffic(u) + '</div>' +
@@ -2249,7 +2349,6 @@ function _userCard(u) {
       '<span><i>' + t('connTh') + '</i><b>' + (u.concurrent_connections || '۲') + '</b></span>' +
       '<span><i>' + t('inbounds') + '</i><b class="badge badge-b">' + esc(inboundName) + '</b></span>' +
       (countryBadge ? '<span><i>IP</i><b>' + countryBadge + '</b></span>' : '') +
-      (nodeBadges ? '<span><i>Node</i><b>'+nodeBadges+'</b></span>' : '') +
     '</div>' +
     '<div class="u-card-actions">' + _userActions(u) + '</div>' +
   '</div>';
@@ -2261,21 +2360,6 @@ if (window.matchMedia) {
     if ($id('users-list') && ALL_USERS.length) renderUsers();
   });
 }
-
-
-// ─── Nodes ───
-window.ALL_NODES = [];
-async function loadNodes(){
-  try{ var r=await api('/api/nodes'); window.ALL_NODES=r.nodes||[]; renderNodes(); if($id('cu-inbound')) cuRenderInboundOpts(); }catch(e){ if($id('nodes-list')) $id('nodes-list').innerHTML='<div class="empty">'+esc(e.message)+'</div>'; }
-}
-function flagFor(cc){ var c=String(cc||'').toUpperCase(); return c.length===2 ? String.fromCodePoint(c.charCodeAt(0)+127397)+String.fromCodePoint(c.charCodeAt(1)+127397) : '🌐'; }
-function renderNodes(){ var el=$id('nodes-list'); if(!el)return; if(!ALL_NODES.length){el.innerHTML='<div class="empty">'+t('noResult')+'</div>';return;} el.innerHTML=ALL_NODES.map(function(n){return '<div class="panel" style="margin-bottom:10px;padding:14px"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><div><b>'+flagFor(n.country)+' '+esc(n.name)+'</b><div class="px-hint">'+esc(n.ip||'--')+' · '+(n.online?'<span class="badge badge-g">'+t('nodeOnline')+'</span>':'<span class="badge badge-r">'+t('nodeOffline')+'</span>')+'</div></div><button class="btn btn-sm btn-r" onclick="removeNode(\''+esc(n.node_id)+'\')">'+t('delete')+'</button></div></div>';}).join(''); }
-function openAddNode(){ $id('node-name').value=''; $id('node-url').value=''; $id('node-key').value=''; openModal('mod-node'); }
-async function submitNode(e){e.preventDefault();try{await api('/api/nodes',{method:'POST',body:{name:$id('node-name').value,panel_url:$id('node-url').value,api_key:$id('node-key').value}});closeModal('mod-node');toast(t('nodeConnected'),'ok');loadNodes();}catch(err){toast(err.message,'err');}}
-async function removeNode(id){if(!confirm(t('confirmDeleteInbound')))return;try{await api('/api/nodes/'+encodeURIComponent(id),{method:'DELETE'});loadNodes();}catch(e){toast(e.message,'err');}}
-function openNodePicker(){var el=$id('node-picker-list');el.innerHTML=ALL_NODES.length?ALL_NODES.map(function(n){return '<label class="ib-pick" style="display:flex;cursor:pointer"><input type="checkbox" data-node-pick="'+esc(n.node_id)+'" style="width:auto;margin-left:10px"><span>'+flagFor(n.country)+' '+esc(n.name)+'</span></label>';}).join(''):'<div class="empty">'+t('noResult')+'</div>';openModal('mod-node-picker');}
-async function loadSettingsIdentity(){try{var r=await api('/api/settings');var st=r||{};if($id('settings-api-key'))$id('settings-api-key').value=st.api_key||'';if($id('server-identity'))$id('server-identity').textContent=flagFor(st.server_country)+' '+(st.server_ip||'--')+(st.server_city?' · '+st.server_city:'');}catch(e){}}
-async function rotateApiKey(){try{var r=await api('/api/settings/api-key/rotate',{method:'POST'});$id('settings-api-key').value=r.api_key;toast(t('regenerate'),'ok');}catch(e){toast(e.message,'err');}}
 
 // ─── User CRUD (SIMPLIFIED) ───
 async function openCreateUser() {
@@ -2291,22 +2375,27 @@ async function openCreateUser() {
   $id('cu-exp').value = '';
   $id('cu-exp-u').value = 'days';
   $id('cu-conn').value = '';
+  var sniSw = $id('cu-sni-spoof'); if (sniSw) sniSw.classList.remove('on');
   openModal('mod-user');
 }
+
+function cuToggleSniSpoof(el) {
+  el.classList.toggle('on');
+}
+
 async function submitCreateUser(e) {
   e.preventDefault();
   var btn = $id('cu-submit'); btn.disabled = true; btn.textContent = t('creatingUser');
   var v = parseFloat($id('cu-vol').value) || 0, vu = $id('cu-vol-u').value;
   var ex = parseInt($id('cu-exp').value) || 0, eu = $id('cu-exp-u').value;
-  var selected_ids = selectedInboundIds();
-  var node_ids = selected_ids.filter(function(i){ return i.indexOf("node:") === 0; }).map(function(i){ return i.slice(5); });
-  var inbound_ids = selected_ids.filter(function(i){ return i.indexOf("node:") !== 0; });
+  var inbound_ids = selectedInboundIds();
   // Per-inbound custom-IP switches + worker countries.
   var cuSw = cuCustomStates();   // { inboundId: {cf:bool, railway:bool} }
   var cuCountries = cuWorkerCountries();  // { inboundId: [codes] }
   var cfIds = inbound_ids.filter(function(i){ return cuSw[i] && cuSw[i].cf; });
   var rwIds = inbound_ids.filter(function(i){ return cuSw[i] && cuSw[i].railway; });
-// Get spoof settings from localStorage
+  var sniSpoof = $id('cu-sni-spoof') ? $id('cu-sni-spoof').classList.contains('on') : false;
+  // Get spoof settings from localStorage
   var fakeSni = '', spoofIp = '';
   try {
     var saved = localStorage.getItem('spider-spoof-settings');
@@ -2334,13 +2423,13 @@ async function submitCreateUser(e) {
       expire_days: eu === 'months' ? ex * 30 : ex,
       concurrent_connections: parseInt($id('cu-conn').value) || 0,
       inbound_ids: inbound_ids,
-      node_ids: node_ids,
       proxy_countries: allCountries,
       proxy_country: firstCountry,
       proxy_ip_enabled: !!allCountries.length,
       // Mark which inbounds want scanned custom-IP configs (worker→cf, tls→railway).
       custom_ip_inbounds: { cf: cfIds, railway: rwIds },
-fake_sni: fakeSni,
+      sni_spoof_v2box: sniSpoof,
+      fake_sni: fakeSni,
       spoof_ip: spoofIp
     }});
     toast(r.username + ' ' + t('userCreated'), 'ok');
@@ -2358,7 +2447,6 @@ function renderEditInboundPicker(u) {
   var cur = u.inbound_ids || (u.inbound_id ? [u.inbound_id] : []);
   EU_INBOUND_PICKS = {};
   cur.forEach(function(i) { EU_INBOUND_PICKS[i] = true; });
-  (u.node_ids || []).forEach(function(i) { EU_INBOUND_PICKS["node:"+i] = true; });
   // Initialize country state from user's existing proxy_countries
   if (!Object.keys(EU_COUNTRIES).length) {
     var existingCountries = u.proxy_countries || [];
@@ -2396,10 +2484,6 @@ function renderEditInboundPicker(u) {
       html += '<div style="display:flex;flex-wrap:wrap;gap:6px;direction:ltr;text-align:left">' + chipHtml + '</div>';
       html += '</div>';
     }
-  });
-  (window.ALL_NODES || []).forEach(function(n){
-    var id='node:'+n.node_id, selected=EU_INBOUND_PICKS[id]===true;
-    html += '<div class="ib-pick'+(selected?' selected':'')+'" data-id="'+esc(id)+'" onclick="euToggleIbPick(this)"><div class="ib-pick-ic"><span class="material-symbols-outlined">dns</span></div><div class="ib-pick-info"><div class="ib-pick-name">'+flagFor(n.country)+' '+esc(n.name||'Node')+'</div><div class="ib-pick-meta">Node · '+esc(n.country||'--')+' · '+(n.online?t('nodeOnline'):t('nodeOffline'))+'</div></div><div class="ib-pick-check"><span class="material-symbols-outlined">check</span></div></div>';
   });
   wrap.innerHTML = html || '<span style="font-size:11px;color:var(--txt2)">' + t('noInboundOpt') + '</span>';
 }
@@ -2467,8 +2551,7 @@ async function submitEditUser(e) {
       reset_traffic: $id('eu-reset') ? $id('eu-reset').checked : false,
       fake_sni: fakeSni,
       spoof_ip: spoofIp,
-      inbound_ids: selectedEditInboundIds().filter(function(i){return i.indexOf("node:")!==0;}),
-      node_ids: selectedEditInboundIds().filter(function(i){return i.indexOf("node:")===0;}).map(function(i){return i.slice(5);}),
+      inbound_ids: selectedEditInboundIds(),
       proxy_countries: allEuCountries,
       proxy_country: allEuCountries[0] || ''
     }});
@@ -2595,7 +2678,6 @@ function selectedInboundIds() {
 function onSecurityChange() {
   var sec = $id('ib-security').value;
   var isReality = sec === 'reality';
-  if (isReality && $id('ib-protocol')) { $id('ib-protocol').value='vless'; }
   toggleById('ib-reality-fields', isReality);
   // External Domain/Port are Reality-only. TLS must never expose or submit them.
   toggleById('ib-external-address-fields', isReality);
@@ -2618,15 +2700,18 @@ async function loadTelegramRailwayInfo(){
   } catch(e) { box.textContent = 'اطلاعات Railway TCP در دسترس نیست؛ مقادیر دستی اینباند استفاده می‌شوند.'; }
 }
 
-function onInboundTypeChange(){
-  var config=$id('ib-type').value==='config';
-  toggleById('ib-config-fields',config);toggleById('ib-tls-fields',config);toggleById('ib-net-wrap',config);toggleById('ib-tg-fields',!config);
-  if(config) onProtocolChange();
-}
-function onProtocolChange(){
-  var config=!$id('ib-type')||$id('ib-type').value==='config';
-  toggleById('ib-protocol-wrap',config);toggleById('ib-tls-fields',config);
-  if(config) onSecurityChange();
+function onProtocolChange() {
+  var proto = $id('ib-protocol').value;
+  var isWg = proto === 'wireguard';
+  var isTg = proto === 'telegram';
+  var isTls = !isWg && !isTg;
+  toggleById('ib-tls-fields', isTls);
+  toggleById('ib-net-wrap', isTls);
+  toggleById('ib-internal-port-wrap', isTls);
+  toggleById('ib-wg-fields', isWg);
+  toggleById('ib-tg-fields', isTg);
+  if (isWg) loadWGEndpoints();
+  if (isTg) loadTelegramRailwayInfo();
 }
 
 function onNetworkChange() {
@@ -2696,7 +2781,7 @@ function openCreateInbound() {
   $id('ib-title').textContent = t('newInbound');
   $id('ib-name').value = '';
   $id('ib-protocol').value = 'vless';
-  $id('ib-port').value = '443'; if($id('ib-server-host')) $id('ib-server-host').value=location.hostname;
+  $id('ib-port').value = '443';
   $id('ib-security').value = 'tls';
   $id('ib-network').value = 'ws';
   $id('ib-extdomain').value = '';
@@ -2721,12 +2806,12 @@ function editInbound(iid) {
   var ib = ALL_IB.find(function(x) { return x.inbound_id === iid; });
   if (!ib) return;
   var isReality = (ib.protocol === 'reality' || ib.security === 'reality');
-  var isWg = false;
+  var isWg = (ib.protocol || '').toLowerCase() === 'wireguard';
   var isTg = (ib.protocol || '').toLowerCase() === 'telegram';
   $id('ib-title').textContent = t('editInbound');
   $id('ib-id').value = iid;
   $id('ib-name').value = ib.name || '';
-  $id('ib-type').value=isTg?'telegram':'config'; $id('ib-protocol').value=['vless','vmess','trojan','shadowsocks'].indexOf((ib.protocol||'').toLowerCase())>=0?(ib.protocol||'vless'):'vless'; if($id('ib-server-host')) $id('ib-server-host').value=ib.server_host||ib.domain||ib.external_domain||location.hostname;
+  $id('ib-protocol').value = ib.protocol || 'vless';
   $id('ib-sni').value = ib.sni || 'is1-ssl.mzstatic.com';
   var rs = ib.reality_settings || {};
   $id('ib-privkey').value = (rs || {}).private_key || '';
@@ -2801,26 +2886,97 @@ function editInbound(iid) {
 
 async function submitInbound(e) {
   e.preventDefault();
-  var btn=$id('ib-submit'); if(btn){btn.disabled=true;btn.textContent=t('saving');}
-  var iid=$id('ib-id').value, type=$id('ib-type').value;
-  var body={name:$id('ib-name').value,protocol:type==='telegram'?'telegram':$id('ib-protocol').value};
-  if(type==='telegram'){
-    var ip=parseInt($id('ib-tg-intport').value,10)||44344, ep=parseInt($id('ib-tg-extport').value,10)||443;
-    body.port=ip;body.external_port=ep;body.external_domain=($id('ib-tg-domain').value||'').trim();
-    body.telegram_settings={internal_port:ip,external_port:ep,external_domain:body.external_domain};
-  }else{
-    var sec=$id('ib-security').value, host=($id('ib-server-host').value||'').trim(), port=parseInt($id('ib-port').value,10)||443;
-    body.domain=host;body.server_host=host;body.external_domain=host;body.port=port;body.external_port=parseInt($id('ib-extport').value,10)||port;
-    body.network=$id('ib-network').value||'ws';body.security=sec;body.sni=($id('ib-sni').value||host||'is1-ssl.mzstatic.com').trim();
-    if(sec==='reality') body.reality_settings={private_key:$id('ib-privkey').value||'',public_key:$id('ib-pubkey').value||'',short_ids:$id('ib-shortids').value||'',spiderx:$id('ib-spiderx').value||'/',dest:body.sni+':443',server_names:[body.sni],sni:body.sni};
-    if(body.network==='ws') body.ws_settings={path:$id('ib-wspath').value||'/'};
-    if(body.network==='xhttp') body.xhttp_settings={path:$id('ib-xhttppath').value||'/',mode:$id('ib-xhttp-mode').value||'auto'};
-    if(body.network==='grpc') body.grpc_settings={serviceName:$id('ib-grpc-svc').value||'grpc'};
+  var btn = $id('ib-submit'); btn.disabled = true;
+  btn.textContent = t('saving');
+  var iid = $id('ib-id').value;
+  var proto = $id('ib-protocol').value;
+  var isWg = proto === 'wireguard';
+
+  var body = {
+    name: $id('ib-name').value,
+    protocol: proto,
+  };
+
+  if (isWg) {
+    // WireGuard inbound - no port field needed, uses endpoint
+    body.wireguard_settings = {
+      warp_mode: $id('ib-wg-warp').classList.contains('on'),
+      endpoint: $id('ib-wg-endpoint').value || '',
+      mtu: $id('ib-wg-mtu').value || '1280',
+      address: $id('ib-wg-address').value || '172.16.0.2/32',
+      dns: $id('ib-wg-dns').value || '1.1.1.1,1.0.0.1',
+      server_public_key: $id('ib-wg-pubkey').value || '',
+      jc: $id('ib-wg-jc').value || '3',
+      jmin: $id('ib-wg-jmin').value || '1',
+      jmax: $id('ib-wg-jmax').value || '3',
+      s1: $id('ib-wg-s1').value || '0',
+      s2: $id('ib-wg-s2').value || '0',
+      h1: $id('ib-wg-h1').value || '1',
+      h2: $id('ib-wg-h2').value || '2',
+      h3: $id('ib-wg-h3').value || '3',
+      h4: $id('ib-wg-h4').value || '4',
+      i1: $id('ib-wg-i1').value || ''
+    };
+  } else if (proto === 'telegram') {
+    // Telegram Proxy inbound - only 3 fields: internal_port, external_port, external_domain
+    var internalPort = parseInt($id('ib-tg-intport').value) || 44344;
+    var externalPort = parseInt($id('ib-tg-extport').value) || 443;
+    body.telegram_settings = {
+      internal_port: internalPort,
+      external_port: externalPort,
+      external_domain: $id('ib-tg-domain').value || ''
+    };
+    // Use internal_port as the listening port
+    body.port = internalPort;
+    body.external_port = externalPort;
+    body.external_domain = $id('ib-tg-domain').value || '';
+  } else {
+    // VLESS / TLS / Reality
+    var network = $id('ib-network').value;
+    var security = $id('ib-security').value;
+    var sni = $id('ib-sni').value || 'is1-ssl.mzstatic.com';
+    var internalPort = parseInt($id('ib-port').value, 10);
+    body.port = Number.isFinite(internalPort) && internalPort > 0 ? internalPort : 443;
+    body.network = network;
+    body.security = security;
+    body.sni = sni;
+    if (security === 'reality') {
+      body.external_port = parseInt($id('ib-extport').value) || null;
+      body.external_domain = $id('ib-extdomain').value || '';
+      // For Reality: SNI is used as destination, server name, and SNI
+      var sniVal = $id('ib-sni').value || 'is1-ssl.mzstatic.com';
+      body.reality_settings = {
+        private_key: $id('ib-privkey').value || '',
+        public_key: $id('ib-pubkey').value || '',
+        short_ids: $id('ib-shortids').value || '',
+        spiderx: $id('ib-spiderx').value || '/',
+        dest: sniVal + ':443',
+        server_names: [sniVal],
+        sni: sniVal
+      };
+    }
+    if (network === 'ws') {
+      body.ws_settings = { path: $id('ib-wspath').value || '/' };
+    } else if (network === 'xhttp') {
+      body.xhttp_settings = {
+        path: $id('ib-xhttppath').value || '/',
+        mode: $id('ib-xhttp-mode').value || 'auto'
+      };
+    } else if (network === 'grpc') {
+      body.grpc_settings = { serviceName: $id('ib-grpc-svc').value || 'grpc' };
+    }
   }
-  try{await api('/api/inbounds'+(iid?'/'+iid:''),{method:iid?'PATCH':'POST',body:body});toast(iid?t('inboundUpdated'):t('inboundCreated'),'ok');closeModal('mod-inbound');loadInbounds();}
-  catch(e){toast(e.message||t('toast.err'),'err');}
-  if(btn){btn.disabled=false;btn.textContent=iid?t('updateInbound'):t('createInbound');}
+
+  try {
+    var url = '/api/inbounds' + (iid ? '/' + iid : '');
+    await api(url, {method: iid ? 'PATCH' : 'POST', body: body});
+    toast(iid ? t('inboundUpdated') : t('inboundCreated'), 'ok');
+    closeModal('mod-inbound');
+    loadInbounds();
+  } catch(e) { toast(e.message || t('toast.err'), 'err'); }
+  btn.disabled = false; btn.textContent = iid ? t('updateInbound') : t('createInbound');
 }
+
 async function deleteInbound(iid) {
   if (!confirm(t('confirmDeleteInbound'))) return;
   try { await api('/api/inbounds/' + iid, {method: 'DELETE'}); toast(t('inboundDeleted'), 'ok'); loadInbounds(); } catch(e) { toast(e.message, 'err'); }
@@ -3243,11 +3399,10 @@ async function scnRunIPs(which) {
       $id(pfx + '-best').textContent = found[0].ms + ' ms';
       $id(pfx + '-best').className = 'scn-ms ' + scnChipClass(found[0].ms);
     }
-    $id(pfx + '-bar').style.width = Math.min(100, (tried / Math.max(1,count*3))*100) + '%';
+    $id(pfx + '-bar').style.width = Math.min(100, (found.length / count) * 100) + '%';
     $id(pfx + '-saved').textContent = found.length + '/' + count;
   }
   scnCtx[which].running = false;
-  $id(pfx + '-bar').style.width='100%';
   if (startBtn) { startBtn.disabled = false; startBtn.textContent = t('startScan'); }
   scnLoadSaved(which);
   if (SCN_STOP) toast(t('scanStopped'), 'warn');
@@ -3443,7 +3598,6 @@ async function scnRunAutoSni() {
   } catch (e) {
     if (list) list.innerHTML = '<div class="scn-empty">خطا: ' + esc(e.message || String(e)) + '</div>';
   } finally {
-    if ($id('scn-sni-bar')) $id('scn-sni-bar').style.width = '100%';
     if (btn) { btn.disabled = false; btn.textContent = 'Auto Scan'; }
     scnLoadSniResults();
   }
@@ -4543,9 +4697,5 @@ if (loginFormEl) {
 }
 
 </script>
-<script>
-function toggleAccordion(id,trigger){var e=document.getElementById(id);if(!e)return;var o=e.classList.toggle('open');if(trigger)trigger.classList.toggle('open',o)}
-function initPanelAccordions(){document.querySelectorAll('.tab-content .panel-h').forEach(function(h){if(h.dataset.accReady)return;var p=h.closest('.panel');if(!p)return;h.dataset.accReady=1;h.style.cursor='pointer';h.setAttribute('role','button');h.setAttribute('aria-expanded','true');h.addEventListener('click',function(e){if(e.target.closest('button,a,input,select,textarea'))return;var closed=p.classList.toggle('panel-collapsed');h.setAttribute('aria-expanded',String(!closed));});})}
-document.addEventListener('DOMContentLoaded',initPanelAccordions);
-</script></body>
+</body>
 </html>

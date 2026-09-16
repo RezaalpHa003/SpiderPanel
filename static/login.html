@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Spider Panel Login</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -169,14 +169,7 @@
 <script>
   document.documentElement.setAttribute('data-theme', localStorage.getItem('spider-theme') === 'light' ? 'light' : 'dark');
 </script>
-<style>
-html,body{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
-input,button{user-select:none;-webkit-user-select:none}
-#bg-canvas,canvas{filter:grayscale(1)!important;opacity:.14!important}
-.spider-login-logo{width:82px;height:82px;margin:0 auto 10px;display:grid;place-items:center;animation:spiderFloat 4s ease-in-out infinite}
-.spider-login-logo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,.4))}
-@keyframes spiderFloat{50%{transform:translateY(-5px) scale(1.03)}}
-</style><script>document.addEventListener('gesturestart',function(e){e.preventDefault()});document.addEventListener('wheel',function(e){if(e.ctrlKey)e.preventDefault()},{passive:false});</script></head>
+</head>
 <body class="bg-background text-on-surface h-screen w-screen overflow-hidden flex items-center justify-center relative">
 
 <!-- Shader Background -->
@@ -233,7 +226,9 @@ input,button{user-select:none;-webkit-user-select:none}
 <div class="glass-card rounded-3xl w-full max-w-md p-stack-lg mx-margin-mobile flex flex-col gap-stack-lg shadow-2xl shadow-black/50 z-10" data-login-theme>
   <!-- Header -->
   <div class="flex flex-col items-center gap-stack-sm text-center">
-    <div class="spider-login-logo"><img src="/static/spiderman-sharp.svg" alt="Spider-Man"></div>
+    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-2">
+      <span class="material-symbols-outlined text-black" style="font-size: 28px;">cloud</span>
+    </div>
     <h1 class="font-headline-lg text-headline-lg text-on-surface">SPIDER PANEL</h1>
     <p class="font-body-sm text-body-sm text-on-surface-variant">High Performance Panel</p>
   </div>
