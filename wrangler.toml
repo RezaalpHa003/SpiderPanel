@@ -1,0 +1,19 @@
+name = "spider-panel-worker"
+main = "worker/_worker.js"
+compatibility_date = "2024-01-01"
+
+kv_namespaces = [
+  { binding = "SPIDER_KV", id = "spider_panel_main_kv", preview_id = "spider_panel_main_kv_preview" },
+  { binding = "TUNNEL_KV", id = "spider_panel_tunnel_kv", preview_id = "spider_panel_tunnel_kv_preview" },
+  { binding = "REVERSE_KV", id = "spider_panel_reverse_kv", preview_id = "spider_panel_reverse_kv_preview" }
+]
+
+[env.production]
+kv_namespaces = [
+  { binding = "SPIDER_KV", id = "spider_panel_main_kv" },
+  { binding = "TUNNEL_KV", id = "spider_panel_tunnel_kv" },
+  { binding = "REVERSE_KV", id = "spider_panel_reverse_kv" }
+]
+
+[build]
+command = "npm install"
