@@ -1,0 +1,60 @@
+name = "spider-panel-worker"
+main = "worker/_worker.js"
+compatibility_date = "2024-12-16"
+type = "javascript"
+
+# Account and zone configuration
+account_id = ""  # Replace with your Cloudflare Account ID
+workers_dev = true
+
+# KV Namespace bindings
+[[kv_namespaces]]
+binding = "SPIDER_KV"
+id = ""           # Replace with KV namespace ID
+preview_id = ""   # Replace with preview namespace ID
+
+[[kv_namespaces]]
+binding = "TUNNEL_KV"
+id = ""           # Replace with tunnel KV namespace ID
+preview_id = ""   # Replace with preview namespace ID
+
+[[kv_namespaces]]
+binding = "REVERSE_KV"
+id = ""           # Replace with reverse KV namespace ID
+preview_id = ""   # Replace with preview namespace ID
+
+# Environment variables
+[env.production]
+name = "spider-panel-worker-prod"
+routes = [
+  { pattern = "*.yourdomain.com/*", zone_name = "yourdomain.com" }
+]
+
+vars = { PANEL_DOMAIN = "your-panel-domain.up.railway.app", WORKER_DOMAIN = "your-worker-domain.com" }
+
+[env.production.kv_namespaces]
+SPIDER_KV = { id = "", preview_id = "" }
+TUNNEL_KV = { id = "", preview_id = "" }
+REVERSE_KV = { id = "", preview_id = "" }
+
+[env.staging]
+name = "spider-panel-worker-staging"
+routes = [
+  { pattern = "staging.yourdomain.com/*", zone_name = "yourdomain.com" }
+]
+
+vars = { PANEL_DOMAIN = "staging-panel-domain.up.railway.app", WORKER_DOMAIN = "staging-worker-domain.com" }
+
+[env.staging.kv_namespaces]
+SPIDER_KV = { id = "", preview_id = "" }
+TUNNEL_KV = { id = "", preview_id = "" }
+REVERSE_KV = { id = "", preview_id = "" }
+
+# Build configuration
+[build]
+command = "npm install"
+cwd = "./"
+watch_paths = ["worker/**/*.js"]
+
+# Compatibility flags
+compatibility_flags = ["nodejs_compat"]
