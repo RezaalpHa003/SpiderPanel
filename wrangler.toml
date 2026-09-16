@@ -10,18 +10,18 @@ workers_dev = true
 # KV Namespace bindings
 [[kv_namespaces]]
 binding = "SPIDER_KV"
-id = ""           # Replace with KV namespace ID
-preview_id = ""   # Replace with preview namespace ID
+id = "spider-kv-production"
+preview_id = "spider-kv-preview"
 
 [[kv_namespaces]]
 binding = "TUNNEL_KV"
-id = ""           # Replace with tunnel KV namespace ID
-preview_id = ""   # Replace with preview namespace ID
+id = "tunnel-kv-production"
+preview_id = "tunnel-kv-preview"
 
 [[kv_namespaces]]
 binding = "REVERSE_KV"
-id = ""           # Replace with reverse KV namespace ID
-preview_id = ""   # Replace with preview namespace ID
+id = "reverse-kv-production"
+preview_id = "reverse-kv-preview"
 
 # Environment variables
 [env.production]
@@ -33,9 +33,9 @@ routes = [
 vars = { PANEL_DOMAIN = "your-panel-domain.up.railway.app", WORKER_DOMAIN = "your-worker-domain.com" }
 
 [env.production.kv_namespaces]
-SPIDER_KV = { id = "", preview_id = "" }
-TUNNEL_KV = { id = "", preview_id = "" }
-REVERSE_KV = { id = "", preview_id = "" }
+SPIDER_KV = { id = "spider-kv-production", preview_id = "spider-kv-preview" }
+TUNNEL_KV = { id = "tunnel-kv-production", preview_id = "tunnel-kv-preview" }
+REVERSE_KV = { id = "reverse-kv-production", preview_id = "reverse-kv-preview" }
 
 [env.staging]
 name = "spider-panel-worker-staging"
@@ -46,9 +46,9 @@ routes = [
 vars = { PANEL_DOMAIN = "staging-panel-domain.up.railway.app", WORKER_DOMAIN = "staging-worker-domain.com" }
 
 [env.staging.kv_namespaces]
-SPIDER_KV = { id = "", preview_id = "" }
-TUNNEL_KV = { id = "", preview_id = "" }
-REVERSE_KV = { id = "", preview_id = "" }
+SPIDER_KV = { id = "spider-kv-staging", preview_id = "spider-kv-staging-preview" }
+TUNNEL_KV = { id = "tunnel-kv-staging", preview_id = "tunnel-kv-staging-preview" }
+REVERSE_KV = { id = "reverse-kv-staging", preview_id = "reverse-kv-staging-preview" }
 
 # Build configuration
 [build]
